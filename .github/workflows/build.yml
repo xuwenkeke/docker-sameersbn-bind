@@ -18,6 +18,11 @@ jobs:
           path: docker-bind
           ref: 9.16.1-20200524
           token: ${{ secrets.GH_TOKEN }}
+        
+      - name: Change Dockerfile image
+        run: |
+          echo $(pwd)
+        
       -
         name: Set up QEMU
         uses: docker/setup-qemu-action@v1        
