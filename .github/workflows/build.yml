@@ -1,7 +1,7 @@
 name: Build Bind Docker images
 on:
   push:
-    branches: [ 9.16.1-20210528 ]
+    branches: [ master ]
 
 env:
   DOCKER_HUB_TAG: xuwenkeke/sameersbn-bind:9.16.1-20200524
@@ -15,15 +15,11 @@ jobs:
         uses: actions/checkout@v2
         with:
           repository: xuwenkeke/docker-bind
-          ref: 9.16.1-20200524
+          ref: 9.16.1-20210528
           token: ${{ secrets.GH_TOKEN }}
         
       - name: Change Dockerfile image
         run: |
-          sed -i 's/www.webmin.com/download.webmin.com/g' Dockerfile 
-          sed -i 's/:focal-20200423/:focal-20210416/g' Dockerfile 
-
-          
           cat Dockerfile
       -
         name: Set up QEMU
