@@ -15,14 +15,13 @@ jobs:
         uses: actions/checkout@v2
         with:
           repository: xuwenkeke/docker-bind
-          path: docker-bind
           ref: 9.16.1-20200524
           token: ${{ secrets.GH_TOKEN }}
         
       - name: Change Dockerfile image
         run: |
           echo $(pwd)
-        
+          ls -lh $(pwd)
       -
         name: Set up QEMU
         uses: docker/setup-qemu-action@v1        
