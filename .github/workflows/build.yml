@@ -20,8 +20,10 @@ jobs:
         
       - name: Change Dockerfile image
         run: |
+          sed -i 's/www.webmin.com/download.webmin.com/g' Dockerfile 
+          sed -i 's/:focal-20200423/:xenial/g' Dockerfile 
+          
           cat Dockerfile
-          sed -i '17d' Dockerfile 
       -
         name: Set up QEMU
         uses: docker/setup-qemu-action@v1        
