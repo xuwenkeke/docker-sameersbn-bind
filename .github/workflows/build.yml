@@ -1,7 +1,7 @@
 name: Build Bind Docker images
 on:
   push:
-    branches: [ main ]
+    branches: [ 9.16.1-20210528 ]
 
 env:
   DOCKER_HUB_TAG: xuwenkeke/sameersbn-bind:9.16.1-20200524
