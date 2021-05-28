@@ -20,11 +20,7 @@ jobs:
         
       - name: Change Dockerfile image
         run: |
-          echo $(pwd)
-          ls -lh $(pwd)
-          cat Dockerfile | grep 'ubuntu:focal'
-          sed -i 's/:focal-20200423/:focal-20210416/g' Dockerfile
-          cat Dockerfile | grep 'ubuntu:focal'
+          cat Dockerfile
       -
         name: Set up QEMU
         uses: docker/setup-qemu-action@v1        
