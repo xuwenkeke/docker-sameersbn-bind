@@ -13,6 +13,11 @@ jobs:
       - 
         name: Checkout
         uses: actions/checkout@v2
+        with:
+          repository: xuwenkeke/docker-bind
+          path: docker-bind
+          ref: 9.16.1-20200524
+          token: ${{ secrets.GH_TOKEN }}
       -
         name: Set up QEMU
         uses: docker/setup-qemu-action@v1        
