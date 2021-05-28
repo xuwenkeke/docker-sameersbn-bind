@@ -21,7 +21,8 @@ jobs:
       - name: Change Dockerfile image
         run: |
           sed -i 's/www.webmin.com/download.webmin.com/g' Dockerfile 
-          sed -i 's/:focal-20200423/:xenial/g' Dockerfile 
+          sed -i 's/:focal-20200423/:focal-20210416/g' Dockerfile 
+
           
           cat Dockerfile
       -
