@@ -44,5 +44,6 @@ jobs:
       -
         name: Test
         run: |
-          docker run -d -p 1000:1000 -p 153:53 ${{ env.DOCKER_HUB_TAG }}
+          docker run -d -p 1000:1000 -p 153:53/tcp ${{ env.DOCKER_HUB_TAG }}
+          docker container ls -a
           sleep 10 && curl -v http://localhost:1000/ && curl -v telnet://localhost:153
