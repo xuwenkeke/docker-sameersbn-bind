@@ -4,7 +4,7 @@ on:
     branches: [ main ]
 
 env:
-  DOCKER_HUB_TAG: xuwenkeke/sameersbn-bind:9.16.1-20200524
+  DOCKER_HUB_TAG: xuwenkeke/sameersbn-bind:9.16.1-20210528
 
 jobs:
   build:
@@ -17,10 +17,6 @@ jobs:
           repository: xuwenkeke/docker-bind
           ref: 9.16.1-20210528
           token: ${{ secrets.GH_TOKEN }}
-        
-      - name: Change Dockerfile image
-        run: |
-          cat Dockerfile
       -
         name: Set up QEMU
         uses: docker/setup-qemu-action@v1        
@@ -40,10 +36,13 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64,linux/arm64,linux/arm
           tags: ${{ env.DOCKER_HUB_TAG }}
+      -
+        name: Image digest
+        run: echo ${{ steps.docker_build.outputs.digest }}
       -
         name: Test
         run: |
-          docker run -d -p 8081:8081 ${{ env.DOCKER_HUB_TAG }}
-          sleep 30 && curl -v http://localhost:8081/nexus/service/local/status
+          docker run -d -p 1000:1000 -p 53:53 ${{ env.DOCKER_HUB_TAG }}
+          sleep 10 && curl -v http://localhost:1000/ && curl -v telnet://localhost:53
