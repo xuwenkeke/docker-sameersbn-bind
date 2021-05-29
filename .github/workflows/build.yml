@@ -45,6 +45,6 @@ jobs:
         name: Test
         run: |
           docker run -d -p 10000:10000 -p 153:53/udp ${{ env.DOCKER_HUB_TAG }}
-          docker container ls -a
           netstat -natup | grep 153
-          sleep 10 && curl -v http://localhost:1000/
+          netstat -natup | grep 10000
+          sleep 10 && curl -v http://localhost:10000/
